@@ -1,16 +1,32 @@
 using UnityEngine;
 
-public class Monster : MonoBehaviour
+public abstract class Monster : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    
+
+    public int damage = 10;
+    public float speed = 2f;
+
+    protected Transform Player;
+
+    protected virtual void Start ()
     {
-        
+        Player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    // Update is called once per frame
+    public abstract void Move();
+    public abstract void Attack();
+
     void Update()
     {
-        
+         Move();
+    }
+
+    protected void DealDamage()
+    {
+        if (Vector2.Distance(transform.position , Player.position) < 1f)
+        {
+            Player.GetComponent<PlayerHealth>().TakeDamage(damage);
+        }
     }
 }
