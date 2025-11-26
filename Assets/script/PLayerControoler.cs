@@ -14,11 +14,33 @@ public class PlayerController : MonoBehaviour
 
     private bool isGrounded = true;
 
+    public bool facingRight = true;
+
     private Rigidbody2D rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void FlipController()
+    {
+        if(rb.velocity.x    < 0 && facingRight)
+        {
+            Flip();
+        }
+
+        else if (rb.velocity.x > 0 && !facingRight)
+        {
+            Flip();
+        }
+    }
+
+
+    private void Flip()
+    {
+        facingRight = !facingRight;
+        transform.Rotate(0 , 180 ,0);
     }
 
 
@@ -28,12 +50,16 @@ public class PlayerController : MonoBehaviour
         MoveX = Input.GetAxisRaw("Horizontal");
         MoveY = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKeyDown (KeyCode.W) && isGrounded)
-        {
-            rb.AddForce(Vector2.up * jumpForce , ForceMode2D.Impulse);
-            isGrounded = false ;
-            
-        }
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+         {
+           rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+           isGrounded = false;
+         }
+
+         FlipController();
+    {
+         
+}
 
         PlayerAnimator.SetBool("IsRunning" , MoveX != 0);
 
@@ -49,7 +75,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 movement = new Vector2(MoveX,MoveY ).normalized;
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        rb.velocity = new Vector2(MoveX * moveSpeed, rb.velocity.y);
 
         
     }
