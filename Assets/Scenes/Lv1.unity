@@ -371,7 +371,7 @@ Transform:
   m_GameObject: {fileID: 163703127}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.8624, y: 1.0797, z: 0}
+  m_LocalPosition: {x: 5.85, y: 1.07, z: 0}
   m_LocalScale: {x: 1.0284028, y: 1.0284028, z: 1.0284028}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3956,8 +3956,8 @@ Transform:
   m_GameObject: {fileID: 2071274813}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.615546, y: 0.58, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -4.492, y: 0.51, z: 0}
+  m_LocalScale: {x: 2.176764, y: 2.2157211, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3977,6 +3977,7 @@ MonoBehaviour:
   PlayerAnimator: {fileID: 2071274817}
   moveSpeed: 5
   jumpForce: 7
+  facingRight: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
