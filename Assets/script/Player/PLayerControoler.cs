@@ -25,12 +25,12 @@ public class PlayerController : MonoBehaviour
 
     private void FlipController()
     {
-        if(rb.velocity.x    < 0 && facingRight)
+        if(rb.linearVelocity.x    < 0 && facingRight)
         {
             Flip();
         }
 
-        else if (rb.velocity.x > 0 && !facingRight)
+        else if (rb.linearVelocity.x > 0 && !facingRight)
         {
             Flip();
         }
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
          {
-           rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+           rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
            isGrounded = false;
          }
 
@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 movement = new Vector2(MoveX,MoveY ).normalized;
-        rb.velocity = new Vector2(MoveX * moveSpeed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(MoveX * moveSpeed, rb.linearVelocity.y);
 
         
     }

@@ -20,6 +20,7 @@
   <Project Path="Unity.VisualScripting.Flow.Editor.csproj" />
   <Project Path="Unity.2D.Tilemap.Editor.csproj" />
   <Project Path="Unity.Burst.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="PsdPlugin.csproj" />
   <Project Path="Unity.2D.Animation.Editor.csproj" />
   <Project Path="Unity.2D.SpriteShape.Editor.csproj" />
@@ -56,6 +57,5 @@
   <Project Path="Unity.CollabProxy.Editor.csproj" />
   <Project Path="Unity.VisualScripting.Shared.Editor.csproj" />
   <Project Path="Unity.PlasticSCM.Editor.Entities.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.Collections.Editor.csproj" />
 </Solution>
