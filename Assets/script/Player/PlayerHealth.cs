@@ -1,4 +1,4 @@
-using System.Runtime;
+﻿using System.Runtime;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -20,18 +20,21 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int dmg)
     {
         currentHealth -= dmg;
-        if(currentHealth <= 0) 
+
+        // (เช็คการตาย)
+        if (currentHealth <= 0)
         {
+            currentHealth = 0;
 
-        currentHealth = 0;
-        //GameManager.Instance.GameOver();
+            // 1. เรียก GameManager ให้จบเกม
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.GameOver();
+            }
 
-
+            // 2. ซ่อนตัวผู้เล่น (ให้เหมือนตายหายไป)
+            gameObject.SetActive(false);
         }
-        
-
-
-
     }
 
     public void Heal(int amount)
