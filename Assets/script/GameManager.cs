@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance; // ตัวแปรนี้จะทำให้ไฟล์อื่นเรียกใช้ได้ทันที
 
     [SerializeField] private GameObject gameOverUI; // ลาก Panel มาใส่ตรงนี้
+    [SerializeField] private GameObject gameWinUI;
 
     private void Awake()
     {
@@ -34,10 +35,20 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
+    public void GameWin()
+    {
+        Debug.Log("Game Win Function Called"); // เช็คว่าเข้ามาทำงานในนี้ไหม
+        Time.timeScale = 0f; // บรรทัดนี้สำคัญที่สุด! คือการสั่งหยุดเวลา
+
+        if (gameWinUI != null) gameWinUI.SetActive(true);
+    }
+
     // ฟังก์ชันสำหรับปุ่ม Restart (เอาไปใส่ปุ่มทีหลังได้)
     public void RestartGame()
     {
         Time.timeScale = 1f; // คืนเวลาให้เดินต่อ
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // โหลดฉากเดิมใหม่
     }
+
+
 }

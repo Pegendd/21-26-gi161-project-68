@@ -21,10 +21,14 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= dmg;
 
+        // *** เพิ่มบรรทัดนี้ ***
+        Debug.Log($"ผู้เล่นโดนโจมตี! เลือดเหลือ: {currentHealth}/{maxHealth}");
+
         // (เช็คการตาย)
         if (currentHealth <= 0)
         {
             currentHealth = 0;
+            Debug.Log("ผู้เล่นตายแล้ว! Game Over"); // เพิ่มให้รู้ว่าตายแล้ว
 
             // 1. เรียก GameManager ให้จบเกม
             if (GameManager.Instance != null)

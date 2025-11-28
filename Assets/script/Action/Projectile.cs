@@ -19,14 +19,23 @@ public class Projectile : MonoBehaviour
         Vector3 moveDirNormalized = (target.position - transform.position).normalized;
         transform.position += moveDirNormalized * moveSpeed * Time.deltaTime;
 
-        // ส่วนเช็คชนผู้เล่น (Logic เดิม)
+        // เช็คระยะห่างว่าถึงตัวหรือยัง
         if (Vector3.Distance(transform.position, target.position) < DistanceToTargetToDestroyProjectile)
         {
             PlayerHealth playerHealth = target.GetComponent<PlayerHealth>();
+
             if (playerHealth != null)
             {
+                // *** เพิ่มบรรทัดนี้ ***
+                Debug.Log($"ระเบิดชนตัวผู้เล่นแล้ว! กำลังสร้างความเสียหาย {damage} หน่วย");
+
                 playerHealth.TakeDamage(damage);
             }
+            else
+            {
+                Debug.Log("ระเบิดชนเป้าหมาย แต่เป้าหมายไม่มีสคริปต์ PlayerHealth");
+            }
+
             Destroy(gameObject);
         }
     }
