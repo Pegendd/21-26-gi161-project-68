@@ -4,7 +4,7 @@ public class ExitZone : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // 1. เช็คก่อนว่ามีอะไรมาชนไหม (พิมบอกชื่อสิ่งที่มาชน)
+        // 1. เช็คก่อนว่ามีอะไรมาชนไหม
         Debug.Log("มีบางอย่างมาชนประตู! สิ่งนั้นคือ: " + collision.gameObject.name);
 
         if (collision.CompareTag("Player"))
@@ -16,8 +16,7 @@ public class ExitZone : MonoBehaviour
             if (inventory != null && inventory.hasKey)
             {
                 Debug.Log(">>>> เงื่อนไขครบ! ชนะเกม");
-
-                // เช็คเจาะจงเลยว่าเจอ GameManager ไหม
+                Destroy(collision.gameObject);
                 if (GameManager.Instance != null)
                 {
                     Debug.Log(">> เจอ GameManager แล้ว! กำลังสั่งให้หยุดเวลา...");
@@ -25,14 +24,17 @@ public class ExitZone : MonoBehaviour
                 }
                 else
                 {
-                    // ถ้าขึ้นบรรทัดนี้ แสดงว่าคุณลืมวาง GameManager ในฉาก หรือโค้ด GameManager มีปัญหา
                     Debug.LogError("!!!! หา GameManager ไม่เจอ (Instance เป็น Null) !!!!");
                 }
             }
             else
             {
-                Debug.Log(">> สิ่งที่มาชน ไม่ใช่ Player (Tag ผิด)");
+                Debug.Log(">> เป็น Player แต่น่าจะยังไม่มีกุญแจ หรือหา Inventory ไม่เจอ");
             }
+        }
+        else
+        {
+            Debug.Log(">> สิ่งที่มาชน ไม่ใช่ Player (Tag ผิด)");
         }
     }
 }
